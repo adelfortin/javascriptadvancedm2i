@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test des Personnages de Jeu</title>
+    <script src="perso.js"></script>
+</head>
+<body>
+    <h1>Test des Personnages du Jeu</h1>
+
+    <script>
+        // Création des personnages
+        let guerrier = new Guerrier("Aragorn", 100, 30, 10);
+        let magicien = new Magicien("Gandalf", 80, 20, 40);
+        let ennemi = new Personnage("Tom Bombadil", 120, 25);
+
+        guerrier.attaquer(ennemi);
+        magicien.attaquer(ennemi);
+        Magicien.soigner(guerrier, magicien.mana);
+        ennemi.attaquer(magicien);
+
+        console.log(`État de Tom Bombadil : ${ennemi.nom} a ${ennemi.vie} points de vie.`);
+        console.log(`État de Aragorn : ${guerrier.nom} a ${guerrier.vie} points de vie.`);
+        console.log(`État de Gandalf : ${magicien.nom} a ${magicien.vie} points de vie.`);
+    </script>
+</body>
+</html>
