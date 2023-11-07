@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test du Compteur</title>
+    <script src="fermeture.js"></script>
+</head>
+<body>
+    <h1>Test du Compteur</h1>
+
+    <script>
+        let compteur = makeCompteur(5); 
+
+        console.log(compteur.count()); 
+        console.log(compteur.count()); 
+        compteur.reset(); 
+        console.log(compteur.count()); 
+        compteur.set(20); 
+        console.log(compteur.count()); 
+    </script>
+</body>
+</html>
+
