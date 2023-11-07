@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Comptes Bancaires</title>
+    <script src="compte.js"></script>
+</head>
+<body>
+    <h1>Gestion des Comptes Bancaires</h1>
+
+    <script>
+        let compte1 = new CompteBancaire("Adel Fortin", 1);
+        compte1.afficher();
+        compte1.crediter(500);
+        compte1.debiter(200);
+
+        let epargne1 = new CompteEpargne("Elon Musk", 20000000000, 3);
+        epargne1.afficher();
+        epargne1.interets();
+    </script>
+</body>
+</html>
