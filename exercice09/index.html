@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon Worker</title>
+</head>
+<body>
+    <h1>Pokémon Worker</h1>
+    <button onclick="chargerPokemon('pikachu')">Charger Pikachu</button>
+    <div id="pokemonInfo"></div>
+
+    <script>
+        let worker = new Worker('pokemon.js');
+
+        worker.onmessage = function(e) {
+            if (e.data.error) {
+                document.getElementById('pokemonInfo').textContent = 'Erreur : ' + e.data.error;
+            } else {
+                let data = e.data;
+                let htmlContent = `<h2>${data.name}</h2>`;
+                htmlContent += `<p>Experience: ${data.base_experience}</p>`;
+
+                // Ajout des capacités du Pokémon
+                htmlContent += `<h3>Capacités:</h3><ul>`;
+                data.abilities.forEach(ability => {
+                    htmlContent += `<li>${ability.ability.name}</li>`;
+                });
+                htmlContent += `</ul>`;
+
+                document.getElementById('pokemonInfo').innerHTML = htmlContent;
+            }
+        };
+
+        function chargerPokemon(pokemonName) {
+            worker.postMessage(pokemonName);
+        }
+    </script>
+</body>
+</html>
+
