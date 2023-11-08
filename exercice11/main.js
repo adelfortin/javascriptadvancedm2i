@@ -1,4 +1,8 @@
 const fs = require('fs');
+
+const filePath = './arborescence.txt';
+generateTreeFromText(filePath);
+
 const path = require('path');
 
 const createDirectory = (dirPath) => {
