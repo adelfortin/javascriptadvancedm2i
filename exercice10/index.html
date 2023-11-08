@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire avec Mémoire</title>
+</head>
+<body>
+    <form id="monFormulaire">
+        <input type="text" id="champSaisie" placeholder="Tapez quelque chose">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var champSaisie = document.getElementById('champSaisie');
+            champSaisie.value = localStorage.getItem('valeurSauvegardee') || '';
+
+            champSaisie.addEventListener('input', function() {
+                localStorage.setItem('valeurSauvegardee', this.value);
+            });
+
+            document.getElementById('monFormulaire').addEventListener('submit', function(e) {
+                e.preventDefault(); // Empêche la soumission réelle du formulaire
+                // Maintenant, on ne supprime plus la valeur de localStorage
+                champSaisie.value = ''; // Réinitialise visuellement le champ, sans toucher à localStorage
+            });
+        });
+    </script>
+</body>
+</html>
+
